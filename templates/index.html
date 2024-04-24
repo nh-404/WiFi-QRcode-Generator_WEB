@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wi-Fi QR Code Generator</title>
+
+<style>
+    body {
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    
+    form {
+        background-color: #2C3E50;
+        padding: 20px;
+        border-radius: 10px;
+        width: 300px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: white;
+    }
+    
+    input[type="text"],
+    input[type="password"] {
+        width: calc(100% - 20px);
+        padding: 8px;
+        margin-bottom: 10px;
+        background-color: #34495E;
+        border: none;
+        border-radius: 5px;
+        color: white;
+    }
+    
+    button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #FFB2E5;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        color: black;
+        transition: background-color 0.3s ease;
+    }
+    
+    button[type="submit"]:hover {
+        background-color: #FF6BA3;
+    }
+</style>
+
+</head>
+<body>
+<div>
+    <form method="post">
+        <h1>WiFi QR Generator</h1>
+        {% csrf_token %}
+        <label for="ssid">Enter your WIFI NAME</label>
+        <input type="text" id="ssid" name="ssid"><br>
+        <label for="password">Enter your WIFI PASSWORD</label>
+        <input type="password" id="password" name="password"><br>
+        <label for="file_name">Enter the file name:</label>
+        <input type="text" id="file_name" name="file_name"><br>
+        <button type="submit">Generate QR code</button>
+    </form>
+</div>
+</body>
+</html>
