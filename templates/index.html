@@ -5,78 +5,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wi-Fi QR Code Generator</title>
-
-<style>
-    body {
-        background-color: black;
-        color: white;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-    
-    form {
-        background-color: #2C3E50;
-        padding: 20px;
-        border-radius: 10px;
-        width: 300px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    }
-    
-    label {
-        display: block;
-        margin-bottom: 5px;
-        color: white;
-    }
-    
-    input[type="text"],
-    input[type="password"] {
-        width: calc(100% - 20px);
-        padding: 8px;
-        margin-bottom: 10px;
-        background-color: #34495E;
-        border: none;
-        border-radius: 5px;
-        color: white;
-    }
-    
-    button[type="submit"] {
-        width: 100%;
-        padding: 10px;
-        background-color: #FFB2E5;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: bold;
-        color: black;
-        transition: background-color 0.3s ease;
-    }
-    
-    button[type="submit"]:hover {
-        background-color: #FF6BA3;
-    }
-</style>
-
+    <title>Generate WiFi QR Code</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for sweetable background color */
+        .sweetable-bg {
+            background-color:#34495E;
+            color: white /* You can adjust the color code as needed */
+        }
+    </style>
 </head>
-<body>
-<div>
-    <form method="post">
-        <h1>WiFi QR Generator</h1>
-        {% csrf_token %}
-        <label for="ssid">Enter your WIFI NAME</label>
-        <input type="text" id="ssid" name="ssid"><br>
-        <label for="password">Enter your WIFI PASSWORD</label>
-        <input type="password" id="password" name="password"><br>
-        <label for="file_name">Enter the file name:</label>
-        <input type="text" id="file_name" name="file_name"><br>
-        <button type="submit">Generate QR code</button>
-    </form>
-</div>
+<body class="sweetable-bg"> <!-- Apply the custom background color class to the body -->
+    <div class="container mt-5">
+        <h1 class="text-center">Generate WiFi QR Code</h1>
+        <form method="post" class="mt-4">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="ssid">WiFi Name (SSID):</label>
+                <input type="text" class="form-control" id="ssid" name="ssid" required>
+            </div>
+            <div class="form-group">
+                <label for="password">WiFi Password:</label>
+                <input type="text" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="file_name">File Name:</label>
+                <input type="text" class="form-control" id="file_name" name="file_name" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Generate QR Code</button>
+        </form>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
